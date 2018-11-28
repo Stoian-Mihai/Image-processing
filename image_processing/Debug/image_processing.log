@@ -1,0 +1,8 @@
+﻿  bitmap.c
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(4): warning C4028: formal parameter 1 different from declaration
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(14): warning C4028: formal parameter 1 different from declaration
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(24): warning C4028: formal parameter 1 different from declaration
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(34): warning C4028: formal parameter 1 different from declaration
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(32): warning C4716: 'bitmap_write_pos': must return a value
+f:\work\gitrepos\image-processing\image_processing\bitmap.c(42): warning C4716: 'bitmap_draw_pixel': must return a value
+  image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe
