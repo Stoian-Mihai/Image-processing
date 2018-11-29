@@ -34,9 +34,14 @@ int bitmap_draw_pixel(char* bitmap_name, int* pixel, char* color)
 {
 	int width = bitmap_width(bitmap_name);
 	int height = bitmap_height(bitmap_name);
-	int offset = pixel[0] + 1 + (height - pixel[1] - 1) * width;
+	int offset = pixel_to_pos(pixel, height, width);
 	
 	
 	bitmap_write_pos("test.bmp",offset, color);
 	
+}
+int pixel_to_pos(int* pixel, int height, int width)
+{
+	int offset = pixel[0] + 1 + (height - pixel[1] - 1) * width;
+	return offset;
 }

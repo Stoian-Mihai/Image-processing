@@ -18,21 +18,12 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="image_draw.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bitmap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="image_draw.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="bitmap.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="structure_header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

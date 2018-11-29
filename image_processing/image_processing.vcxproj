@@ -117,13 +117,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.c" />
-    <ClCompile Include="image_draw.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
-    <ClInclude Include="image_draw.h" />
-    <ClInclude Include="structure_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

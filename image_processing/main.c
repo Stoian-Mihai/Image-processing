@@ -14,8 +14,8 @@ int main()
 	color[1] = 255;
 	color[2] = 0;
 	int pixel[2];
-	pixel[0] = 483;
-	pixel[1] = 51;
+	pixel[0] = 499;
+	pixel[1] = 345;
 	bitmap_draw_pixel("test.bmp", pixel, color);
 	system("pause"); //Fixing Visual studio shit
 	return 0;
