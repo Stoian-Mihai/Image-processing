@@ -4,11 +4,6 @@
 #include "bitmap.h"
 int main()
 {
-	/*point  c;
-	c.x = 10;
-	c.y = 4;
-	draw_line("caca.bmp", c, c);
-	*/
 	char color[3];
 	color[0] = 0;
 	color[1] = 255;
