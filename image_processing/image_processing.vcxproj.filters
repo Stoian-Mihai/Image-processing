@@ -21,9 +21,15 @@
     <ClCompile Include="bitmap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="algorithms.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithms.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
