@@ -15,4 +15,6 @@ int bitmap_draw_pixel(char* bitmap_name, int* pixel, char* color);
 int pixel_to_pos(int* pixel, int height, int width);
 char* bitmap_load(char* bitmap_name);
 void bitmap_unload(char* bitmap_name, char* v, int size);
+char* bitmap_flip(char* bitmap, int width, int height, int size);
+char* bitmap_unflip(char* flipped_bitmap, int width, int height, int size);
 #endif 

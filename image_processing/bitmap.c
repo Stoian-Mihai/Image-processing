@@ -45,8 +45,7 @@ int bitmap_draw_pixel(char* bitmap_name, int* pixel, char* color)
 	int width = bitmap_width(bitmap_name);
 	int height = bitmap_height(bitmap_name);
 	int offset = pixel_to_pos(pixel, height, width);
-	
-	
+	printf("%d\n", offset);
 	bitmap_write_pos("test.bmp",offset, color);
 	
 }
@@ -71,4 +70,50 @@ void bitmap_unload(char* bitmap_name, char* v, int size)
 	FILE *f;
 	f = fopen(bitmap_name, "w+b");
 	fwrite(v, sizeof(char), size, f);
+}
+char* bitmap_flip(char* bitmap, int width, int height, int size)
+{
+	char* flipped_bitmap;
+	flipped_bitmap = malloc(size);
+	int k = 0;
+	for(int i=0;i<height;i++)
+	{
+		for(int j=0;j<width;j++)
+		{
+			int pixel[2];
+			pixel[0] = j;
+			pixel[1] = i;
+			flipped_bitmap[k++] = bitmap[pixel_to_pos(pixel, height, width)*3 + 0];
+			flipped_bitmap[k++] = bitmap[pixel_to_pos(pixel, height, width)*3 + 1];
+			flipped_bitmap[k++] = bitmap[pixel_to_pos(pixel, height, width)*3 + 2];
+		}
+	}
+	free(bitmap);
+	return flipped_bitmap;
+}
+char* bitmap_unflip(char* flipped_bitmap, int width, int height, int size)
+{
+	char* bitmap;
+	bitmap = malloc(size);
+	int k = 0, offset;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			int pixel[2];
+			pixel[0] = j;
+			pixel[1] = i;
+			if(k == 460932)
+			{
+				printf("cacat");
+			}
+			offset = pixel_to_pos(pixel, height, width);
+			bitmap[offset*3 + 0] = flipped_bitmap[k++];
+			bitmap[offset*3 + 1] = flipped_bitmap[k++];	
+			bitmap[offset*3 + 2] = flipped_bitmap[k++];
+		}
+	}
+	printf("%d", bitmap[460932]);
+	free(flipped_bitmap);
+	return bitmap;
 }
