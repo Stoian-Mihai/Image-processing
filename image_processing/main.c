@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "bitmap.h"
+#include "bitmapIO.h"
 #include "algorithms.h"
 int main()
 {
