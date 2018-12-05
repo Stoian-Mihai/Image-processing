@@ -1,3 +1,2 @@
-﻿  bitmap.c
-f:\work\gitrepos\image-processing\image_processing\bitmap.c(51): warning C4716: 'bitmap_draw_pixel': must return a value
+﻿  main.c
   image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe
