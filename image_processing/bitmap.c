@@ -38,52 +38,35 @@ int pixel_to_pos(int* pixel, int height, int width)
 	return offset;
 }
 /// loading a bitmap to memory and unloading it 
-char* bitmap_load(char* bitmap_name)
-{
-	int size = bitmap_data_size(bitmap_name);
-	char *bitmap;
-	bitmap = malloc(size);
-	FILE *f;	
-	f = fopen(bitmap_name, "r+b");
-	fread(bitmap, size, 1, f);
-	return bitmap;
-
-}
-void  bitmap_unload(char* bitmap_name, char* bitmap, int size)
-{
-	FILE *f;
-	f = fopen(bitmap_name, "w+b");
-	fwrite(bitmap, sizeof(char), size, f);
-}
 char* bitmap_linearize(char* bitmap, int width, int height, int size)
 {
 	char* flipped_bitmap;
 	int k = 0;
 
 	flipped_bitmap = malloc(size);
-	for(int i=0;i<height;i++)
+	for (int i = 0; i < height; i++)
 	{
-		for(int j=0;j<width;j++)
+		for (int j = 0; j < width; j++)
 		{
 			int pixel[2];
 			pixel[0] = j;
 			pixel[1] = i;
-			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width)*3 + 0];
-			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width)*3 + 1];
-			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width)*3 + 2];
+			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 0];
+			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 1];
+			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 2];
 		}
 	}
 
-	for(int i=0;i<54;i++)
+	for (int i = 0; i < 54; i++)
 	{
-		flipped_bitmap[height*width*3 + i] = bitmap[i];
+		flipped_bitmap[height*width * 3 + i] = bitmap[i];
 	}
 	free(bitmap);
 	return flipped_bitmap;
 }
 char* bitmap_unlinearize(char* flipped_bitmap, int width, int height, int size)
 {
-	char* bitmap;	
+	char* bitmap;
 	int k = 0, offset;
 
 	bitmap = malloc(size);
@@ -95,18 +78,51 @@ char* bitmap_unlinearize(char* flipped_bitmap, int width, int height, int size)
 			pixel[0] = j;
 			pixel[1] = i;
 			offset = pixel_to_pos(pixel, height, width);
-			bitmap[51 + offset*3 + 0] = flipped_bitmap[k++];
-			bitmap[51 + offset*3 + 1] = flipped_bitmap[k++];	
-			bitmap[51 + offset*3 + 2] = flipped_bitmap[k++];
+			bitmap[51 + offset * 3 + 0] = flipped_bitmap[k++];
+			bitmap[51 + offset * 3 + 1] = flipped_bitmap[k++];
+			bitmap[51 + offset * 3 + 2] = flipped_bitmap[k++];
 		}
 	}
 	for (int i = 0; i < 54; i++)
 	{
-		bitmap[i] = flipped_bitmap[height*width*3 + i];
+		bitmap[i] = flipped_bitmap[height*width * 3 + i];
 	}
 	free(flipped_bitmap);
 	return bitmap;
 }
+char* bitmap_load(char* bitmap_name)
+{
+	int size, height, width;
+	char *bitmap, *flipped_bitmap;
+
+	size = bitmap_data_size(bitmap_name);
+	height = bitmap_data_height(bitmap_name);
+	width = bitmap_data_width(bitmap_name);
+	bitmap = malloc(size);
+
+	FILE *f;	
+	f = fopen(bitmap_name, "r+b");
+	fread(bitmap, size, 1, f);
+	flipped_bitmap = bitmap_linearize(bitmap, width, height, size);
+	
+	return flipped_bitmap;
+
+}
+void  bitmap_unload(char* old_bitmap_name, char* bitmap_name, char* bitmap)
+{
+	int size, height, width;
+	char *flipped_bitmap;
+
+	size = bitmap_data_size(old_bitmap_name);
+	height = bitmap_data_height(old_bitmap_name);
+	width = bitmap_data_width(old_bitmap_name);
+	flipped_bitmap = bitmap_unlinearize(bitmap, width, height, size);
+
+	FILE *f;
+	f = fopen(bitmap_name, "w+b");
+	fwrite(flipped_bitmap, sizeof(char), size, f);
+}
+
 
 ///out of  order functions
 /*

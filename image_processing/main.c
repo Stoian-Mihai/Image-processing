@@ -1,16 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "image_draw.h"
+
 #include "bitmap.h"
 #include "algorithms.h"
 int main()
 {
 	
-
-
-
-	//unsigned int *v;
-	//v = xorshift32(400);*/
 	
 
 	system("pause"); 
@@ -33,5 +28,9 @@ int pixel[2];
 	char *p = bitmap_linearize(v, width, height, size);
     char *c = bitmap_unlinearize(p, width, height, size);
 	bitmap_unload("print2.bmp", c, size);
+var2
+    char *v = bitmap_load("test.bmp");
+	bitmap_unload("test.bmp", "new.bmp", v);
 -------------------
+
  */
