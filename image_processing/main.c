@@ -7,21 +7,17 @@
 int main()
 {
 	
-	
-	int height, width, size,seed;
-	seed = 987654321;
-	int SV = 123456789;
+	int height, width, size;
 	height = bitmap_data_height("test.bmp");
 	width = bitmap_data_width("test.bmp");
 	size = bitmap_data_size("test.bmp");
-	unsigned char *v = bitmap_load("test.bmp");
-	unsigned char *p = bitmap_alg_permutation(v, height, width, size, seed);
 	
-	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
+		
 	
+	
+	unsigned char *bitmap = bitmap_load("test.bmp");
+	unsigned char *cript = bitmap_alg_crypt(bitmap, height, width, size, 987654321, 123456789);
 	bitmap_unload("test.bmp", "new.bmp", cript);
-	
-	
 	system("pause"); 
 	return 0;
 
@@ -45,6 +41,27 @@ int pixel[2];
 var2
 	unsigned char *v = bitmap_load("test.bmp");
 	bitmap_unload("test.bmp", "new.bmp", v);
--------------------
+-----------------------------------------------------------------
+**test for permutation
+	int *perm = random_permutation(5, 968574);
+		for (int i = 0; i < 5; i++)
+			printf("%d ", perm[i]);
+
+**test for crypting
+	int height, width, size,seed;
+	seed = 987654321;
+	int SV = 123456789;
+	height = bitmap_data_height("test.bmp");
+	width = bitmap_data_width("test.bmp");
+	size = bitmap_data_size("test.bmp");
+	unsigned char *v = bitmap_load("test.bmp");
+	int *perm;
+	perm = random_permutation(height*width, seed);
+	unsigned char *p = bitmap_alg_permutation(v, height, width, size, seed, perm);
+
+	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
+
+	bitmap_unload("test.bmp", "new.bmp", cript);
+---------------------------------------
 
  */
