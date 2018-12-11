@@ -42,5 +42,6 @@ int* random_permutation(int size, int seed)
 		p[k] = aux;
 
 	}
+	//free(random_sequence);
 	return p;
 }

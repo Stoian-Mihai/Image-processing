@@ -8,13 +8,16 @@ int main()
 {
 	
 	
-	int height, width, size;
+	int height, width, size,seed;
+	seed = 987654321;
+	int SV = 123456789;
 	height = bitmap_data_height("test.bmp");
 	width = bitmap_data_width("test.bmp");
 	size = bitmap_data_size("test.bmp");
-	char *v = bitmap_load("test.bmp");
-	char *p = bitmap_alg_permutation(v, height, width, size, 123456789);
-	bitmap_unload("test.bmp", "new.bmp", p);
+	unsigned char *v = bitmap_load("test.bmp");
+	unsigned char *p = bitmap_alg_permutation(v, height, width, size, 100);
+	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
+	bitmap_unload("test.bmp", "new.bmp", cript);
 
 	system("pause"); 
 	return 0;
@@ -32,12 +35,12 @@ int pixel[2];
 	height = bitmap_data_height("test.bmp"); // 400
 	width = bitmap_data_width("test.bmp"); // 500
 	size = bitmap_data_size("test.bmp");
-	char *v = bitmap_load("test.bmp");
-	char *p = bitmap_linearize(v, width, height, size);
-	char *c = bitmap_unlinearize(p, width, height, size);
+	unsigned char *v = bitmap_load("test.bmp");
+	unsigned char *p = bitmap_linearize(v, width, height, size);
+	unsigned char *c = bitmap_unlinearize(p, width, height, size);
 	bitmap_unload("print2.bmp", c, size);
 var2
-	char *v = bitmap_load("test.bmp");
+	unsigned char *v = bitmap_load("test.bmp");
 	bitmap_unload("test.bmp", "new.bmp", v);
 -------------------
 

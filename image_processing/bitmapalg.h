@@ -3,5 +3,6 @@
 #define bitmapalg_H_
 #include <stdlib.h>
 
-char* bitmap_alg_permutation(char *bitmap, int height, int width, int size, int seed);
+unsigned char* bitmap_alg_permutation(unsigned char *bitmap, int height, int width, int size, int seed);
+unsigned char* bitmap_xor(unsigned char *bitmap, int height, int width, int seed, unsigned int SV);
 #endif 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /// pulling data from bitmap  functions
-int bitmap_data_width(char* bitmap_name)
+int bitmap_data_width(unsigned char* bitmap_name)
 {
 	FILE *f;
 	int width = 0;
@@ -12,7 +12,7 @@ int bitmap_data_width(char* bitmap_name)
 	fread(&width, sizeof(int), 1, f);
 	return width;
 }
-int bitmap_data_height(char* bitmap_name)
+int bitmap_data_height(unsigned char* bitmap_name)
 {
 	FILE *f;
 	int height = 0;
@@ -22,7 +22,7 @@ int bitmap_data_height(char* bitmap_name)
 	fread(&height, sizeof(int), 1, f);
 	return height;
 }
-int bitmap_data_size(char* bitmap_name)
+int bitmap_data_size(unsigned char* bitmap_name)
 {
 	FILE *f;
 	int size = 0;
@@ -38,9 +38,9 @@ int pixel_to_pos(int* pixel, int height, int width)
 	return offset;
 }
 /// loading a bitmap to memory and unloading it 
-char* bitmap_linearize(char* bitmap, int width, int height, int size)
+unsigned char* bitmap_linearize(unsigned char* bitmap, int width, int height, int size)
 {
-	char* flipped_bitmap;
+	unsigned char* flipped_bitmap;
 	int k = 0;
 
 	flipped_bitmap = malloc(size);
@@ -64,9 +64,9 @@ char* bitmap_linearize(char* bitmap, int width, int height, int size)
 	free(bitmap);
 	return flipped_bitmap;
 }
-char* bitmap_unlinearize(char* flipped_bitmap, int width, int height, int size)
+unsigned char* bitmap_unlinearize(unsigned char* flipped_bitmap, int width, int height, int size)
 {
-	char* bitmap;
+	unsigned char* bitmap;
 	int k = 0, offset;
 
 	bitmap = malloc(size);
@@ -90,10 +90,10 @@ char* bitmap_unlinearize(char* flipped_bitmap, int width, int height, int size)
 	free(flipped_bitmap);
 	return bitmap;
 }
-char* bitmap_load(char* bitmap_name)
+unsigned char* bitmap_load(unsigned char* bitmap_name)
 {
 	int size, height, width;
-	char *bitmap, *flipped_bitmap;
+	unsigned char *bitmap, *flipped_bitmap;
 
 	size = bitmap_data_size(bitmap_name);
 	height = bitmap_data_height(bitmap_name);
@@ -108,10 +108,10 @@ char* bitmap_load(char* bitmap_name)
 	return flipped_bitmap;
 
 }
-void  bitmap_unload(char* old_bitmap_name, char* bitmap_name, char* bitmap)
+void  bitmap_unload(unsigned char* old_bitmap_name, unsigned char* bitmap_name, unsigned char* bitmap)
 {
 	int size, height, width;
-	char *flipped_bitmap;
+	unsigned char *flipped_bitmap;
 
 	size = bitmap_data_size(old_bitmap_name);
 	height = bitmap_data_height(old_bitmap_name);
@@ -120,13 +120,13 @@ void  bitmap_unload(char* old_bitmap_name, char* bitmap_name, char* bitmap)
 
 	FILE *f;
 	f = fopen(bitmap_name, "w+b");
-	fwrite(flipped_bitmap, sizeof(char), size, f);
+	fwrite(flipped_bitmap, sizeof(unsigned char), size, f);
 }
 
 
 ///out of  order functions
 /*
-void bitmap_write_pos(char* bitmap_name, int pos, char* color)
+void bitmap_write_pos(unsigned char* bitmap_name, int pos, unsigned char* color)
 {
 	FILE *f;
 
@@ -136,7 +136,7 @@ void bitmap_write_pos(char* bitmap_name, int pos, char* color)
 
 
 }
-int bitmap_draw_pixel(char* bitmap_name, int* pixel, char* color)
+int bitmap_draw_pixel(unsigned char* bitmap_name, int* pixel, unsigned char* color)
 {
 	int width = bitmap_data_width(bitmap_name);
 	int height = bitmap_data_height(bitmap_name);
