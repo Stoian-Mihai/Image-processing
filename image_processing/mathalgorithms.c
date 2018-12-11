@@ -36,7 +36,8 @@ int* random_permutation(int size, int seed)
 	for (k = perm_size - 1; k >= 0; k--)
 	{
 		r = random_sequence[++rand_it];
-		r = r % ((size)-1);
+		//r = r % ((size)-1);
+		r = r % (k+1);
 		aux = p[r];
 		p[r] = p[k];
 		p[k] = aux;

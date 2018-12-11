@@ -16,6 +16,7 @@ int main()
 	size = bitmap_data_size("test.bmp");
 	unsigned char *v = bitmap_load("test.bmp");
 	unsigned char *p = bitmap_alg_permutation(v, height, width, size, seed);
+	
 	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
 	
 	bitmap_unload("test.bmp", "new.bmp", cript);
