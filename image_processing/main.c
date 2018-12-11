@@ -2,11 +2,19 @@
 #include <stdlib.h>
 
 #include "bitmapIO.h"
-#include "algorithms.h"
+#include "mathalgorithms.h"
+#include "bitmapalg.h"
 int main()
 {
 	
 	
+	int height, width, size;
+	height = bitmap_data_height("test.bmp");
+	width = bitmap_data_width("test.bmp");
+	size = bitmap_data_size("test.bmp");
+	char *v = bitmap_load("test.bmp");
+	char *p = bitmap_alg_permutation(v, height, width, size, 123456789);
+	bitmap_unload("test.bmp", "new.bmp", p);
 
 	system("pause"); 
 	return 0;
@@ -26,10 +34,10 @@ int pixel[2];
 	size = bitmap_data_size("test.bmp");
 	char *v = bitmap_load("test.bmp");
 	char *p = bitmap_linearize(v, width, height, size);
-    char *c = bitmap_unlinearize(p, width, height, size);
+	char *c = bitmap_unlinearize(p, width, height, size);
 	bitmap_unload("print2.bmp", c, size);
 var2
-    char *v = bitmap_load("test.bmp");
+	char *v = bitmap_load("test.bmp");
 	bitmap_unload("test.bmp", "new.bmp", v);
 -------------------
 

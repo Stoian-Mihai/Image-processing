@@ -18,18 +18,24 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="algorithms.c">
+    <ClCompile Include="bitmapIO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bitmapIO.c">
+    <ClCompile Include="bitmapalg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathalgorithms.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithms.h">
+    <ClInclude Include="bitmapIO.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="bitmapIO.h">
+    <ClInclude Include="bitmapalg.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mathalgorithms.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -116,12 +116,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithms.c" />
+    <ClCompile Include="mathalgorithms.c" />
+    <ClCompile Include="bitmapalg.c" />
     <ClCompile Include="bitmapIO.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithms.h" />
+    <ClInclude Include="mathalgorithms.h" />
+    <ClInclude Include="bitmapalg.h" />
     <ClInclude Include="bitmapIO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
