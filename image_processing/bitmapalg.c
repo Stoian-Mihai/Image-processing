@@ -1,6 +1,8 @@
 #pragma once
 #include "bitmapalg.h"
 #include "mathalgorithms.h"
+#include <stdio.h>
+
 union split_integer
 {
 	unsigned int i;
@@ -39,6 +41,8 @@ unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, u
 	bitmap[0] = x.s[1] ^ bitmap[0] ^ y.s[1];
 	bitmap[1] = x.s[2] ^ bitmap[1] ^ y.s[2];
 	bitmap[2] = x.s[3] ^ bitmap[2] ^ y.s[3];
+    
+
 	for(i=1; i<width*height; i++)
 	{
 		int c_pos, prev_pos;
@@ -50,9 +54,9 @@ unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, u
 		bitmap[c_pos + 1] = bitmap[prev_pos + 1] ^ bitmap[c_pos + 1] ^ x.s[2];
 		bitmap[c_pos + 2] = bitmap[prev_pos + 2] ^ bitmap[c_pos + 2] ^ x.s[3];
 	}
+	
 
-
-
+	//bitmap[1] = 255;
 
 	return bitmap;
 }

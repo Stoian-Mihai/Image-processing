@@ -15,10 +15,12 @@ int main()
 	width = bitmap_data_width("test.bmp");
 	size = bitmap_data_size("test.bmp");
 	unsigned char *v = bitmap_load("test.bmp");
-	unsigned char *p = bitmap_alg_permutation(v, height, width, size, 100);
+	unsigned char *p = bitmap_alg_permutation(v, height, width, size, seed);
 	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
+	
 	bitmap_unload("test.bmp", "new.bmp", cript);
-
+	
+	
 	system("pause"); 
 	return 0;
 

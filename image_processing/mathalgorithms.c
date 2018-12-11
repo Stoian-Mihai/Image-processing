@@ -5,7 +5,7 @@
 unsigned int* xorshift32(int size, int seed)
 {
 	unsigned int r, k;
-	r = seed;
+	r = (unsigned int) seed;
 	unsigned int* v = calloc(size, sizeof(int));
 	v[0] = seed;
 	for(k = 1; k<=size;k++)
@@ -23,7 +23,7 @@ int* random_permutation(int size, int seed)
 	unsigned int r = 0, aux, rand_it = 0, perm_size, rand_size, *p; 
 	unsigned int *random_sequence;
 	int k;
-    perm_size = size;
+	perm_size = size;
 	rand_size = 2 * size - 1;
 	p = malloc(perm_size * sizeof(int));
 
