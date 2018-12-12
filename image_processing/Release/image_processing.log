@@ -1,0 +1,20 @@
+﻿  mathalgorithms.c
+f:\work\gitrepos\image-processing\image_processing\mathalgorithms.c(11): warning C4018: '<=': signed/unsigned mismatch
+f:\work\gitrepos\image-processing\image_processing\mathalgorithms.c(32): warning C4018: '<': signed/unsigned mismatch
+  bitmapalg.c
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(73): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(74): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(74): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(76): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
+  bitmapIO.c
+f:\work\gitrepos\image-processing\image_processing\bitmapio.c(10): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  f:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+f:\work\gitrepos\image-processing\image_processing\bitmapio.c(20): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  f:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+f:\work\gitrepos\image-processing\image_processing\bitmapio.c(29): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  f:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+f:\work\gitrepos\image-processing\image_processing\bitmapio.c(104): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  f:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+f:\work\gitrepos\image-processing\image_processing\bitmapio.c(122): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  f:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+  main.c

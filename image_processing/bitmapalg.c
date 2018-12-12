@@ -14,7 +14,7 @@ unsigned char* bitmap_alg_permutation(unsigned char *bitmap,int height,int width
 	int *p, i;
 	p = permutation;
 	unsigned char* bitmap_perm;
-	bitmap_perm = malloc(size);
+	bitmap_perm = malloc(size+1);
 	
 
 	for(i=0;i<height*width;i++)
@@ -30,6 +30,7 @@ unsigned char* bitmap_alg_permutation(unsigned char *bitmap,int height,int width
 	{
 		bitmap_perm[height*width * 3 + i] = bitmap[height*width * 3 + i];
 	}
+	free(bitmap);
 	return bitmap_perm;
 }
 unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, unsigned int SV)
@@ -59,7 +60,7 @@ unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, u
 	
 
 	//bitmap[1] = 255;
-
+	free(random_sequence);
 	return bitmap;
 }
 unsigned char* bitmap_alg_crypt(unsigned char *bitmap, int height, int width, int size,int seed, unsigned int SV)
@@ -72,7 +73,7 @@ unsigned char* bitmap_alg_crypt(unsigned char *bitmap, int height, int width, in
 	Rpermutation = random_permutation(height*width, seed);
 	permutated_bitmap = bitmap_alg_permutation(bitmap, height, width, size, seed, Rpermutation);
 	crypted_bitmap = bitmap_xor(permutated_bitmap, height, width, seed, SV);
-
+	free(Rpermutation);
 	return crypted_bitmap;
 
 }
