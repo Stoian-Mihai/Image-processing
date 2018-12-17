@@ -7,17 +7,14 @@
 int main()
 {
 	
-	int height, width, size;
+	int height, width, size, seed;
+	unsigned int SV;
 	height = bitmap_data_height("test.bmp");
 	width = bitmap_data_width("test.bmp");
 	size = bitmap_data_size("test.bmp");
+	seed = 987654321;
+	SV = 123456789;
 	
-		
-	
-	
-	unsigned char *bitmap = bitmap_load("test.bmp");
-	unsigned char *cript = bitmap_alg_crypt(bitmap, height, width, size, 987654321, 123456789);
-	bitmap_unload("test.bmp", "new.bmp", cript);
 	system("pause"); 
 	return 0;
 
@@ -62,6 +59,27 @@ var2
 	unsigned char *cript = bitmap_xor(p, height, width, seed, SV);
 
 	bitmap_unload("test.bmp", "new.bmp", cript);
+crypting v2
+	unsigned char *bitmap = bitmap_load("test.bmp");
+	unsigned char *cript = bitmap_alg_crypt(bitmap, height, width, size, 987654321, 123456789);
+	bitmap_unload("test.bmp", "new.bmp", cript);
 ---------------------------------------
-
+test for inverse permutation
+//unsigned char *v = bitmap_load("test.bmp");
+	int *permutation = random_permutation(height*width, 987654321);
+	//unsigned char* perm_bitmap = bitmap_alg_permutation(v, height, width, size, 987654321, permutation);
+	//bitmap_unload("test.bmp", "new.bmp", perm_bitmap);
+	int *inv_permutation = inverse_permutation(permutation, height*width);
+	unsigned char *perm_bitmap = bitmap_load("new.bmp");
+	unsigned char *v = bitmap_alg_permutation(perm_bitmap, height, width, size, 987654321, inv_permutation);
+	bitmap_unload("new.bmp", "decript.bmp", v);
+------------------------------------
+test for decrypting
+seed = 987654321;
+	SV = 123456789;
+	unsigned char *v = bitmap_load("test.bmp");
+	unsigned char *c;
+	//c = bitmap_alg_crypt(v, height, width, size, seed, SV);
+	c = bitmap_alg_decrypt(v, height, width, size, seed, SV);
+-------------------------------------------
  */

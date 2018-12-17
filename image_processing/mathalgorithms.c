@@ -45,3 +45,15 @@ int* random_permutation(int size, int seed)
 	free(random_sequence);
 	return p;
 }
+int*  inverse_permutation(int* permutation, int size)
+{
+	int* inv_permutation;
+	inv_permutation = malloc((size + 1) * sizeof(int));
+
+	for(int i=0;i<size;i++)
+	{
+		inv_permutation[permutation[i]] = i;
+	}
+	free(permutation);
+	return inv_permutation;
+}

@@ -7,7 +7,7 @@
 union split_integer
 {
 	unsigned int i;
-	char s[4];
+	unsigned char s[4];
 };
 unsigned char* bitmap_alg_permutation(unsigned char *bitmap,int height,int width,int size, int seed, int *permutation)
 {
@@ -44,10 +44,10 @@ unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, u
 	bitmap[0] = x.s[1] ^ bitmap[0] ^ y.s[1];
 	bitmap[1] = x.s[2] ^ bitmap[1] ^ y.s[2];
 	bitmap[2] = x.s[3] ^ bitmap[2] ^ y.s[3];
-	
 
 	for(i=1; i<width*height; i++)
 	{
+		
 		int c_pos, prev_pos;
 		c_pos = i * 3;
 		prev_pos = (i - 1) * 3;
@@ -56,18 +56,59 @@ unsigned char* bitmap_xor(unsigned char *bitmap,int height,int width,int seed, u
 		bitmap[c_pos + 0] = bitmap[prev_pos + 0] ^ bitmap[c_pos + 0] ^ x.s[1];
 		bitmap[c_pos + 1] = bitmap[prev_pos + 1] ^ bitmap[c_pos + 1] ^ x.s[2];
 		bitmap[c_pos + 2] = bitmap[prev_pos + 2] ^ bitmap[c_pos + 2] ^ x.s[3];
+		
+		
 	}
 	
 
-	//bitmap[1] = 255;
+	
+	free(random_sequence);
+	return bitmap;
+}
+unsigned char* bitmap_inverse_xor(unsigned char *bitmap, int height, int width, int seed, unsigned int SV)
+{
+	int i;
+	unsigned int* random_sequence;
+	random_sequence = xorshift32((2 * height*width) - 1, seed);
+	union split_integer x, y;
+	x.i = SV;
+	y.i = random_sequence[width*height];
+	unsigned char prev_byte0, prev_byte1, prev_byte2, aux;
+	prev_byte0 = bitmap[0]; prev_byte1 = bitmap[1]; prev_byte2 = bitmap[2];
+	bitmap[0] = x.s[1] ^ bitmap[0] ^ y.s[1];
+	bitmap[1] = x.s[2] ^ bitmap[1] ^ y.s[2];
+	bitmap[2] = x.s[3] ^ bitmap[2] ^ y.s[3];
+	
+	
+	for (i = 1; i < width*height; i++)
+	{
+
+		int c_pos, prev_pos;
+		c_pos = i * 3;
+		prev_pos = (i - 1) * 3;
+		union split_integer x;
+		x.i = random_sequence[width*height + i];
+		aux = bitmap[c_pos + 0];
+		bitmap[c_pos + 0] = prev_byte0 ^ bitmap[c_pos + 0] ^ x.s[1];
+		prev_byte0 = aux;
+		aux = bitmap[c_pos + 1];
+		bitmap[c_pos + 1] = prev_byte1 ^ bitmap[c_pos + 1] ^ x.s[2];
+		prev_byte1 = aux;
+		aux = bitmap[c_pos + 2];
+		bitmap[c_pos + 2] = prev_byte2 ^ bitmap[c_pos + 2] ^ x.s[3];
+		prev_byte2 = aux;
+
+
+	}
+
+
+
 	free(random_sequence);
 	return bitmap;
 }
 unsigned char* bitmap_alg_crypt(unsigned char *bitmap, int height, int width, int size,int seed, unsigned int SV)
 {
-	height = bitmap_data_height("test.bmp");
-	width = bitmap_data_width("test.bmp");
-	size = bitmap_data_size("test.bmp");
+	
 	int *Rpermutation,*permutated_bitmap, *crypted_bitmap;
 
 	Rpermutation = random_permutation(height*width, seed);
@@ -76,4 +117,15 @@ unsigned char* bitmap_alg_crypt(unsigned char *bitmap, int height, int width, in
 	free(Rpermutation);
 	return crypted_bitmap;
 
+}
+unsigned char* bitmap_alg_decrypt(unsigned char *crypted_bitmap, int height, int width, int size, int seed, unsigned int SV)
+{
+	int *Rpermutation, *permutated_bitmap, *bitmap, *Inverse_permutation;
+
+	bitmap = bitmap_inverse_xor(crypted_bitmap, height, width, seed, SV);
+	Rpermutation = random_permutation(width*height, seed);
+	Inverse_permutation = inverse_permutation(Rpermutation, width*height);
+	permutated_bitmap = bitmap_alg_permutation(bitmap, height, width, size, seed, Inverse_permutation);
+	free(Inverse_permutation);
+	return permutated_bitmap;
 }

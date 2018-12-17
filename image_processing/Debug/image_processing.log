@@ -1,10 +1,10 @@
 ﻿  bitmapalg.c
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(74): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(75): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(75): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(77): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
-  mathalgorithms.c
-f:\work\gitrepos\image-processing\image_processing\mathalgorithms.c(11): warning C4018: '<=': signed/unsigned mismatch
-f:\work\gitrepos\image-processing\image_processing\mathalgorithms.c(32): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(115): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(116): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(116): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(118): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(125): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(131): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
   image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe
