@@ -129,3 +129,36 @@ unsigned char* bitmap_alg_decrypt(unsigned char *crypted_bitmap, int height, int
 	free(Inverse_permutation);
 	return permutated_bitmap;
 }
+float* chi_test(unsigned char* bitmap_name)
+{
+	int size, height, width;
+	unsigned char *bitmap = bitmap_load(bitmap_name);
+	size = bitmap_data_size(bitmap_name);
+	height = bitmap_data_height(bitmap_name);
+	width = bitmap_data_width(bitmap_name);
+	
+	float *chi;
+	chi = calloc(4, sizeof(float));
+	for (int i = 0; i <= 255; i++)
+	{
+		int fiR, fiG, fiB;
+		fiR = fiG = fiB = 0;
+		for (int j = 0; j < width*height; j++)
+		{
+			int R, G, B;
+			R = j * 3;
+			G = R + 1;
+			B = R + 2;
+
+			if (bitmap[R] == i) fiR++;
+			if (bitmap[G] == i) fiG++;
+			if (bitmap[B] == i) fiB++;
+		}
+		float fbar = (width * height) / 256;
+		chi[0] += ((fiR - fbar) * (fiR - fbar)) / fbar;
+		chi[1] += ((fiG - fbar) * (fiG - fbar)) / fbar;
+		chi[2] += ((fiB - fbar) * (fiB - fbar)) / fbar;
+	}
+	printf(" chiR: %f\n chiG: %f\n chiB: %f\n",chi[2],chi[1],chi[0]);
+	return chi;
+}

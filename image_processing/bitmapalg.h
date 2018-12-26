@@ -5,6 +5,7 @@
 
 unsigned char* bitmap_alg_crypt(unsigned char *bitmap, int height, int width, int size, int seed, unsigned int SV);
 unsigned char* bitmap_alg_decrypt(unsigned char *crypted_bitmap, int height, int width, int size, int seed, unsigned int SV);
+float* chi_test(unsigned char* bitmap_name);
 #endif 
 //OUT OF ORDER
 /*

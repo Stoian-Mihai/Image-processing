@@ -6,5 +6,6 @@ f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(118): warning C41
 f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(125): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
 f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
 f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(131): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(130): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
+f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(157): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe

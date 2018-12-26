@@ -14,6 +14,7 @@ int main()
 	size = bitmap_data_size("test.bmp");
 	seed = 987654321;
 	SV = 123456789;
+
 	
 	system("pause"); 
 	return 0;
