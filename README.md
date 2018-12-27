@@ -7,4 +7,4 @@ Steps of the project:
 
 2 - Decrypting the image
 
-3 - Processing the image and try to guess the handwriting numbers using a basic algorithm
+3 - Processing the image and try to guess the handwriting numbers using Template matching
