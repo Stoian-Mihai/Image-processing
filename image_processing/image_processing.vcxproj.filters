@@ -27,6 +27,9 @@
     <ClCompile Include="mathalgorithms.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateMalg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmapIO.h">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="mathalgorithms.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateMalg.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

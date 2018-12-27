@@ -159,6 +159,6 @@ float* chi_test(unsigned char* bitmap_name)
 		chi[1] += ((fiG - fbar) * (fiG - fbar)) / fbar;
 		chi[2] += ((fiB - fbar) * (fiB - fbar)) / fbar;
 	}
-	printf(" chiR: %f\n chiG: %f\n chiB: %f\n",chi[2],chi[1],chi[0]);
+	printf(" chiR: %f\n chiG: %f\n chiB: %f\n",chi[0],chi[1],chi[2]);
 	return chi;
 }

@@ -120,11 +120,13 @@
     <ClCompile Include="bitmapalg.c" />
     <ClCompile Include="bitmapIO.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="TemplateMalg.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mathalgorithms.h" />
     <ClInclude Include="bitmapalg.h" />
     <ClInclude Include="bitmapIO.h" />
+    <ClInclude Include="TemplateMalg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

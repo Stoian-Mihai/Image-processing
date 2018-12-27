@@ -54,6 +54,11 @@ unsigned char* bitmap_linearize(unsigned char* bitmap, int width, int height, in
 			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 0];
 			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 1];
 			flipped_bitmap[k++] = bitmap[51 + pixel_to_pos(pixel, height, width) * 3 + 2];
+
+			unsigned char aux;
+			aux = flipped_bitmap[k - 1];
+			flipped_bitmap[k - 1] = flipped_bitmap[k - 3];
+			flipped_bitmap[k - 3] = aux;
 		}
 	}
 
@@ -81,6 +86,11 @@ unsigned char* bitmap_unlinearize(unsigned char* flipped_bitmap, int width, int 
 			bitmap[51 + offset * 3 + 0] = flipped_bitmap[k++];
 			bitmap[51 + offset * 3 + 1] = flipped_bitmap[k++];
 			bitmap[51 + offset * 3 + 2] = flipped_bitmap[k++];
+
+			unsigned char aux;
+			aux = bitmap[51 + offset * 3 + 0];
+			bitmap[51 + offset * 3 + 0] = bitmap[51 + offset * 3 + 2];
+			bitmap[51 + offset * 3 + 2] = aux;
 		}
 	}
 	for (int i = 0; i < 54; i++)

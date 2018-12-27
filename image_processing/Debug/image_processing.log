@@ -1,11 +1,5 @@
-﻿  bitmapalg.c
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(115): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(116): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(116): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(118): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(125): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: 'function': incompatible types - from 'int *' to 'unsigned char *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(128): warning C4133: '=': incompatible types - from 'unsigned char *' to 'int *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(130): warning C4133: 'return': incompatible types - from 'int *' to 'unsigned char *'
-f:\work\gitrepos\image-processing\image_processing\bitmapalg.c(157): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+﻿  TemplateMalg.c
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(8): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(50): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(68): warning C4716: 'TM_correlation': must return a value
   image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe

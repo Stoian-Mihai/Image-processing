@@ -4,6 +4,7 @@
 #include "bitmapIO.h"
 #include "mathalgorithms.h"
 #include "bitmapalg.h"
+#include "TemplateMalg.h"
 int main()
 {
 	
@@ -15,7 +16,10 @@ int main()
 	seed = 987654321;
 	SV = 123456789;
 
-	
+	unsigned char *bitmap;
+	bitmap = bitmap_load("test.bmp");
+	TM_grayscale(bitmap, width, height);
+	bitmap_unload("test.bmp", "new.bmp", bitmap);
 	system("pause"); 
 	return 0;
 
