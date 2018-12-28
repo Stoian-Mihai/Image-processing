@@ -8,18 +8,28 @@
 int main()
 {
 	
-	int height, width, size, seed;
+	int bitmap_height, bitmap_width, bitmap_size, seed;
 	unsigned int SV;
-	height = bitmap_data_height("test.bmp");
-	width = bitmap_data_width("test.bmp");
-	size = bitmap_data_size("test.bmp");
+	bitmap_height = bitmap_data_height("test.bmp");
+	bitmap_width = bitmap_data_width("test.bmp");
+	bitmap_size = bitmap_data_size("test.bmp");
 	seed = 987654321;
 	SV = 123456789;
 
 	unsigned char *bitmap;
 	bitmap = bitmap_load("test.bmp");
-	TM_grayscale(bitmap, width, height);
+	unsigned char *template;
+	template = bitmap_load("cifra0.bmp");
+	int template_height, template_width;
+	template_height = bitmap_data_height("cifra0.bmp");
+	template_width = bitmap_data_width("cifra0.bmp");
+
+	template_matching(bitmap, template, bitmap_width, bitmap_height, template_width, template_height);
+	
+	
+	
 	bitmap_unload("test.bmp", "new.bmp", bitmap);
+
 	system("pause"); 
 	return 0;
 
