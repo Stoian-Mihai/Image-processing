@@ -95,7 +95,7 @@ void template_matching(unsigned char* bitmap, unsigned char* template, int bitma
 	TM_grayscale(template, template_width, template_height);
 
 	for(i=0;i<=bitmap_height - template_height;i++)
-		for(j=0;j<=bitmap_width - template_width - 100;j++)
+		for(j=0;j<=bitmap_width - template_width;j++)
 		{
 			unsigned char* cuted_bitmap = cut_template(bitmap, bitmap_width, template_width, template_height, i, j);
 			float corr = TM_correlation(cuted_bitmap, template, template_width, template_height);
