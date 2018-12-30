@@ -1,5 +1,8 @@
 ﻿  TemplateMalg.c
-f:\work\gitrepos\image-processing\image_processing\templatemalg.c(8): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-f:\work\gitrepos\image-processing\image_processing\templatemalg.c(63): warning C4101: 'j': unreferenced local variable
-f:\work\gitrepos\image-processing\image_processing\templatemalg.c(115): warning C4716: 'draw_red': must return a value
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(10): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(62): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(67): warning C4101: 'j': unreferenced local variable
+  main.c
+  Generating Code...
+f:\work\gitrepos\image-processing\image_processing\templatemalg.c(125): warning C4716: 'draw_red': must return a value
   image_processing.vcxproj -> F:\Work\GitRepos\Image-processing\image_processing\Debug\image_processing.exe
