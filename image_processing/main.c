@@ -19,12 +19,12 @@ int main()
 	unsigned char *bitmap;
 	bitmap = bitmap_load("test.bmp");
 	unsigned char *template;
-	template = bitmap_load("cifra0cont.bmp");
-	int template_height, template_width;
-	template_height = bitmap_data_height("cifra0cont.bmp");
-	template_width = bitmap_data_width("cifra0cont.bmp");
+	//template = bitmap_load("cifra7.bmp");
+	//int template_height, template_width;
+	//template_height = bitmap_data_height("cifra7.bmp");
+	//template_width = bitmap_data_width("cifra7.bmp");
 
-	template_matching(bitmap, template, bitmap_width, bitmap_height, template_width, template_height);
+	template_matching(bitmap, bitmap_width, bitmap_height);
 	
 	
 	
