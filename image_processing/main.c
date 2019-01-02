@@ -23,8 +23,8 @@ int main()
 	//int template_height, template_width;
 	//template_height = bitmap_data_height("cifra7.bmp");
 	//template_width = bitmap_data_width("cifra7.bmp");
-
-	template_matching(bitmap, bitmap_width, bitmap_height);
+	float mincorr = 0.7;
+	template_matching(bitmap, bitmap_width, bitmap_height,mincorr);
 	
 	
 	

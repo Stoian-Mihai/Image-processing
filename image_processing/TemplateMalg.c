@@ -94,57 +94,11 @@ float TM_correlation(unsigned char* cuted_bitmap, unsigned char* template, int t
 	corr = (float) corr / n;
 	return corr;
 }
-void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_height)
+void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_height,float mincorr)
 {
 	int i, j, k = -1;
 	TM_grayscale(bitmap, bitmap_width, bitmap_height);
-	
-	//color declaration
 
-		color* color_ar;
-		color_ar = malloc(10 * sizeof(color));
-	
-
-		color_ar[0].R = 255;
-		color_ar[0].G = 0;
-		color_ar[0].B = 0;
-
-		color_ar[1].R = 255;
-		color_ar[1].G = 255;
-		color_ar[1].B = 0;
-
-		color_ar[2].R = 0;
-		color_ar[2].G = 255;
-		color_ar[2].B = 0;
-
-		color_ar[3].R = 0;
-		color_ar[3].G = 255;
-		color_ar[3].B = 255;
-
-		color_ar[4].R = 255;
-		color_ar[4].G = 0;
-		color_ar[4].B = 255;
-
-		color_ar[5].R = 0;
-		color_ar[5].G = 0;
-		color_ar[5].B = 25;
-
-		color_ar[6].R = 192;
-		color_ar[6].G = 192;
-		color_ar[6].B = 192;
-
-		color_ar[7].R = 255;
-		color_ar[7].G = 140;
-		color_ar[7].B = 0;
-
-		color_ar[8].R = 128;
-		color_ar[8].G = 0;
-		color_ar[8].B = 128;
-
-		color_ar[9].R = 128;
-		color_ar[9].G = 0;
-		color_ar[9].B = 0;
-	
 
 	detection *dect_ar;
 	dect_ar = malloc(1000 * sizeof(detection));
@@ -182,14 +136,13 @@ void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_heigh
 			{
 				unsigned char* cuted_bitmap = cut_template(bitmap, bitmap_width, template_width, template_height, i, j);
 				float corr = TM_correlation(cuted_bitmap, template, template_width, template_height);
-				if (corr > 0.5)
+				if (corr > mincorr)
 				{
 					++k;
 					dect_ar[k].corr = corr;
 					dect_ar[k].top_i = i;
 					dect_ar[k].top_j = j;
 					dect_ar[k].number = number_cnt;
-					draw_rect(bitmap, bitmap_width, template_width, template_height, i, j, color_ar[number_cnt]);
 				}
 				//printf("%f ", corr);
 				free(cuted_bitmap);
@@ -200,7 +153,7 @@ void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_heigh
 	k++;
 	qsort((void*)dect_ar, k, sizeof(detection), qsort_comparator);
 	non_max(dect_ar, k, template_width, template_height);
-
+	draw(dect_ar, k, bitmap, bitmap_width, bitmap_height, template_width, template_height);
 	return;
 
 }
@@ -273,6 +226,59 @@ void non_max(detection *dect_ar, int n, int template_width, int template_height)
 		}
 
 }
+void draw(detection *dect_ar, int k, unsigned char* bitmap, int bitmap_width, int bitmap_height, int template_width, int template_height)
+{
+	//color declaration
+
+	color* color_ar;
+	color_ar = malloc(10 * sizeof(color));
+
+
+	color_ar[0].R = 255;
+	color_ar[0].G = 0;
+	color_ar[0].B = 0;
+
+	color_ar[1].R = 255;
+	color_ar[1].G = 255;
+	color_ar[1].B = 0;
+
+	color_ar[2].R = 0;
+	color_ar[2].G = 255;
+	color_ar[2].B = 0;
+
+	color_ar[3].R = 0;
+	color_ar[3].G = 255;
+	color_ar[3].B = 255;
+
+	color_ar[4].R = 255;
+	color_ar[4].G = 0;
+	color_ar[4].B = 255;
+
+	color_ar[5].R = 0;
+	color_ar[5].G = 0;
+	color_ar[5].B = 25;
+
+	color_ar[6].R = 192;
+	color_ar[6].G = 192;
+	color_ar[6].B = 192;
+
+	color_ar[7].R = 255;
+	color_ar[7].G = 140;
+	color_ar[7].B = 0;
+
+	color_ar[8].R = 128;
+	color_ar[8].G = 0;
+	color_ar[8].B = 128;
+
+	color_ar[9].R = 128;
+	color_ar[9].G = 0;
+	color_ar[9].B = 0;
+
+	for (int i = 0; i < k; i++)
+		if (dect_ar[i].corr > -1)
+			draw_rect(bitmap, bitmap_width, template_width, template_height, dect_ar[k].top_i, dect_ar[k].top_j, color_ar[dect_ar[k].number]);
+}
+
 //OUT OF ORDER
 /*
  float average_image_gray_intensity(unsigned char* bitmap, int template_width, int template_height, int top_left_offset)
