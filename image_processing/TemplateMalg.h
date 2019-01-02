@@ -9,6 +9,7 @@ typedef struct
 	float corr;
 	int top_i;
 	int top_j;
+	int number;
 }detection;
 typedef struct
 {

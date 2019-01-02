@@ -1,7 +1,15 @@
 #include "TemplateMalg.h"
 #include <math.h>
 #include "bitmapIO.h"
-
+int qsort_comparator(const void *p, const void *q)
+{
+	detection x, y;
+	x = *(detection*)p;
+	y = *(detection*)q;
+	if (x.corr < y.corr) return -1;
+	if (x.corr > y.corr) return 1;
+	return 0;
+}
 void TM_grayscale(unsigned char* bitmap, int width, int height)
 {
 	int aux;
@@ -88,7 +96,7 @@ float TM_correlation(unsigned char* cuted_bitmap, unsigned char* template, int t
 }
 void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_height)
 {
-	int i, j, k = 0;
+	int i, j, k = -1;
 	TM_grayscale(bitmap, bitmap_width, bitmap_height);
 	
 	//color declaration
@@ -180,6 +188,7 @@ void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_heigh
 					dect_ar[k].corr = corr;
 					dect_ar[k].top_i = i;
 					dect_ar[k].top_j = j;
+					dect_ar[k].number = number_cnt;
 					draw_rect(bitmap, bitmap_width, template_width, template_height, i, j, color_ar[number_cnt]);
 				}
 				//printf("%f ", corr);
@@ -189,6 +198,7 @@ void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_heigh
 
 	}
 	k++;
+	qsort((void*)dect_ar, k, sizeof(detection), qsort_comparator);
 	return;
 
 }
