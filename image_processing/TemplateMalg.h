@@ -22,5 +22,5 @@ void TM_grayscale(unsigned char* bitmap, int width, int height);
 void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_height);
 unsigned char* cut_template(unsigned char* bitmap, int bitmap_width, int template_width, int template_height, int top_i, int top_j);
 void draw_rect(unsigned char* bitmap, int bitmap_width, int template_width, int template_height, int top_i, int top_j, color color);
-
+void non_max(detection *dect_ar, int n, int template_width, int template_height);
 #endif 

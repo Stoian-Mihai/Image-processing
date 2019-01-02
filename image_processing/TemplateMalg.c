@@ -199,6 +199,8 @@ void template_matching(unsigned char* bitmap, int bitmap_width, int bitmap_heigh
 	}
 	k++;
 	qsort((void*)dect_ar, k, sizeof(detection), qsort_comparator);
+	non_max(dect_ar, k, template_width, template_height);
+
 	return;
 
 }
@@ -229,6 +231,47 @@ void draw_rect(unsigned char* bitmap, int bitmap_width, int template_width, int 
 		}
 		
 	}
+}
+int area_sup(int di_x, int di_y, int dj_x, int dj_y, int width, int height)
+{
+	float di_area, dj_area;
+
+	di_area = width * height;
+	dj_area = width * height;
+
+	int inter_height = (di_x + height) - (dj_x + height);
+	int inter_width = (di_y + width) - (dj_y + width);
+
+	if (inter_width < 0) inter_width = inter_width * (-1);
+	if (inter_height < 0) inter_height = inter_height * (-1);
+
+	if (inter_width > width && inter_height > height) return 0;
+	float inter_area = inter_width * inter_height;
+	float sup;
+	sup = (inter_area) / (di_area + dj_area - inter_area);
+
+	if (sup > 0.2) return 1;
+
+	return 0;
+}
+void non_max(detection *dect_ar, int n, int template_width, int template_height)
+{
+	int i, j;
+	for (i = 0; i < n; i++)
+		for (j = i + 1; j < n; j++)
+		{
+			int di_x, di_y, dj_x, dj_y;
+			di_x = dect_ar[i].top_i;
+			di_y = dect_ar[i].top_j;
+			dj_x = dect_ar[j].top_i;
+			dj_y = dect_ar[j].top_j;
+
+			if (area_sup(di_x, di_y, dj_x, dj_y, template_width, template_height) && dect_ar[i].corr > -1 && dect_ar[j].corr > -1)
+			{
+				dect_ar[j].corr = -2;
+			}
+		}
+
 }
 //OUT OF ORDER
 /*
