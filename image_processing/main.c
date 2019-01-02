@@ -81,13 +81,21 @@ void t_matching()
 	template_matching(bitmap, bitmap_width, bitmap_height, corr);
 	bitmap_unload(input_image_name, output_image_name, bitmap);
 }
+void chi()
+{
+	unsigned char input_image_name[25];
+	printf("Enter input bmp image name:\n");
+	scanf("%s", &input_image_name);
+	chi_test(input_image_name);
+}
 int main()
 {
 	
 	printf("Choose:\n");
 	printf("1. encrypt image\n");
 	printf("2. decrypt image\n");
-	printf("3. apply template matching\n");
+	printf("3. chy test\n");
+	printf("4. apply template matching\n");
 	int option;
 	scanf("%d", &option);
 	switch (option) {
@@ -98,8 +106,11 @@ int main()
 
 	case 2:
 		decrypt();
-		break; 
+		break;
 	case 3:
+		chi();
+		break;
+	case 4:
 		t_matching();
 		break;
 		
