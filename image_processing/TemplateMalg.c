@@ -275,7 +275,7 @@ void draw(detection *dect_ar, int k, unsigned char* bitmap, int bitmap_width, in
 	color_ar[9].B = 0;
 
 	for (int i = 0; i < k; i++)
-		if (dect_ar[i].corr > -1)
+		if (dect_ar[i].corr > -1 && dect_ar[i].number >= 0 && dect_ar[i].number <=9)
 			draw_rect(bitmap, bitmap_width, template_width, template_height, dect_ar[k].top_i, dect_ar[k].top_j, color_ar[dect_ar[k].number]);
 }
 

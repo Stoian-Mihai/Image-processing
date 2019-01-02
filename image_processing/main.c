@@ -5,31 +5,106 @@
 #include "mathalgorithms.h"
 #include "bitmapalg.h"
 #include "TemplateMalg.h"
+void encrypt()
+{
+	unsigned char input_image_name[25], output_image_name[25], secret_key_name[25];
+	FILE *skey;
+	int seed, SV;
+	
+
+	printf("Enter input bmp image name:\n");
+	scanf("%s", &input_image_name);
+	printf("Enter output bmp image name:\n");
+	scanf("%s", &output_image_name);
+	printf("Enter secret key txt file name:\n");
+	scanf("%s", &secret_key_name);
+
+	skey = fopen(secret_key_name, "r");
+	fscanf(skey,"%d%d", &seed, &SV);
+
+	
+	int bitmap_height, bitmap_width, bitmap_size;
+
+	bitmap_height = bitmap_data_height(input_image_name);
+	bitmap_width = bitmap_data_width(input_image_name);
+	bitmap_size = bitmap_data_size(input_image_name);
+
+	unsigned char* bitmap = bitmap_load(input_image_name);
+	unsigned char* crypt = bitmap_alg_crypt(bitmap, bitmap_height, bitmap_width, bitmap_size, 987654321, 123456789);
+	bitmap_unload(input_image_name, output_image_name, crypt);
+	
+	return;
+}
+void decrypt()
+{
+	unsigned char input_image_name[25], output_image_name[25], secret_key_name[25];
+	FILE *skey;
+	int seed, SV;
+
+
+	printf("Enter input bmp image name:\n");
+	scanf("%s", &input_image_name);
+	printf("Enter output bmp image name:\n");
+	scanf("%s", &output_image_name);
+	printf("Enter secret key txt file name:\n");
+	scanf("%s", &secret_key_name);
+
+	skey = fopen(secret_key_name, "r");
+	fscanf(skey, "%d%d", &seed, &SV);
+
+
+	int bitmap_height, bitmap_width, bitmap_size;
+
+	bitmap_height = bitmap_data_height(input_image_name);
+	bitmap_width = bitmap_data_width(input_image_name);
+	bitmap_size = bitmap_data_size(input_image_name);
+
+	unsigned char* crypt = bitmap_load(input_image_name);
+	unsigned char* bitmap = bitmap_alg_decrypt(crypt, bitmap_height, bitmap_width, bitmap_size, 987654321, 123456789);
+	bitmap_unload(input_image_name, output_image_name, bitmap);
+
+	return;
+}
+void t_matching()
+{
+	printf("Enter minimum corelation\n");
+	float corr;
+	int bitmap_width, bitmap_height;
+	scanf("%f", &corr);
+	unsigned char input_image_name[25], output_image_name[25];
+	printf("Enter input bmp image name:\n");
+	scanf("%s", &input_image_name);
+	printf("Enter output bmp image name:\n");
+	scanf("%s", &output_image_name);
+
+	unsigned char *bitmap = bitmap_load(input_image_name);
+	template_matching(bitmap, bitmap_width, bitmap_height, corr);
+	bitmap_unload(input_image_name, output_image_name, bitmap);
+}
 int main()
 {
 	
-	int bitmap_height, bitmap_width, bitmap_size, seed;
-	unsigned int SV;
-	bitmap_height = bitmap_data_height("test.bmp");
-	bitmap_width = bitmap_data_width("test.bmp");
-	bitmap_size = bitmap_data_size("test.bmp");
-	seed = 987654321;
-	SV = 123456789;
+	printf("Choose:\n");
+	printf("1. encrypt image\n");
+	printf("2. decrypt image\n");
+	printf("3. apply template matching\n");
+	int option;
+	scanf("%d", &option);
+	switch (option) {
 
-	unsigned char *bitmap;
-	bitmap = bitmap_load("test.bmp");
-	unsigned char *template;
-	//template = bitmap_load("cifra7.bmp");
-	//int template_height, template_width;
-	//template_height = bitmap_data_height("cifra7.bmp");
-	//template_width = bitmap_data_width("cifra7.bmp");
-	float mincorr = 0.7;
-	template_matching(bitmap, bitmap_width, bitmap_height,mincorr);
-	
-	
-	
-	bitmap_unload("test.bmp", "new.bmp", bitmap);
+	case 1:
+		encrypt();
+		break; 
 
+	case 2:
+		decrypt();
+		break; 
+	case 3:
+		t_matching();
+		break;
+		
+	}
+	
 	system("pause"); 
 	return 0;
 
