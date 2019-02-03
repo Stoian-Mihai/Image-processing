@@ -50,4 +50,8 @@ For 0.5 correlation threshold:
   <img src="705.bmp" width="350" title="7">
   8:
   <img src="805.bmp" width="350" title="8">
-</p>  
+</p>    
+
+Wikipedia links: 
+<a href="https://en.wikipedia.org/wiki/Cross-correlation">Cross-correlation </a>
+
