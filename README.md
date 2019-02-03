@@ -18,5 +18,6 @@ The decryption was possible thanks to the xor properties.
 
 <p align="left">
   <img src="peppers.bmp" width="250" ">
+  After the encryption:
   <img src="peppersenc.bmp" width="250" ">
 </p>
