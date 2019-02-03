@@ -27,4 +27,13 @@ We can see that the Chi-squared test values of the encrypted image are bellow 29
 <p align="left">
   <img src="chinormal.png" width="200" title="non encrypted image">
   <img src="chienc.png" width="200" title="encrypted image">
-</p>
+</p>  
+
+Wikipedia links: 
+<a href="https://en.wikipedia.org/wiki/Chi-squared_test">Chi-squared test</a>
+<a href="https://en.wikipedia.org/wiki/Xorshift">Xorshift</a>
+<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher–Yates shuffle</a>
+
+---
+
+
