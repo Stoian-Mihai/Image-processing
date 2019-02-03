@@ -25,6 +25,6 @@ Example of encryption:
 We can see that the Chi-squared test values of the encrypted image are bellow 293.25 so the distribution of the pixels is uniform.
 
 <p align="left">
-  <img src="chinormal.png" width="150" title="non encrypted image">
-  <img src="chienc.png" width="150" alt="encrypted image">
+  <img src="chinormal.png" width="200" title="non encrypted image">
+  <img src="chienc.png" width="200" alt="encrypted image">
 </p>
