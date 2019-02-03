@@ -71,14 +71,24 @@ void t_matching()
 	float corr;
 	int bitmap_width, bitmap_height;
 	scanf("%f", &corr);
-	unsigned char input_image_name[25], output_image_name[25];
+	unsigned char input_image_name[25], output_image_name[25], template_image_name[25];
 	printf("Enter input bmp image name:\n");
 	scanf("%s", &input_image_name);
 	printf("Enter output bmp image name:\n");
 	scanf("%s", &output_image_name);
-
+	printf("Enter template bmp image name:\n");
+	scanf("%s", &template_image_name);
 	unsigned char *bitmap = bitmap_load(input_image_name);
-	template_matching(bitmap, bitmap_width, bitmap_height, corr);
+	bitmap_width = bitmap_data_width(input_image_name);
+	bitmap_height = bitmap_data_height(input_image_name);
+
+	int template_width, template_height;
+	unsigned char *template = bitmap_load(template_image_name);
+	template_width = bitmap_data_width(template_image_name);
+	template_height = bitmap_data_height(template_image_name);
+
+	template_matching(bitmap,template, bitmap_width, bitmap_height, template_width,template_height,corr);
+
 	bitmap_unload(input_image_name, output_image_name, bitmap);
 }
 void chi()
