@@ -30,8 +30,8 @@ We can see that the Chi-squared test values of the encrypted image are bellow 29
 </p>  
 
 Wikipedia links: 
-<a href="https://en.wikipedia.org/wiki/Chi-squared_test">Chi-squared test</a>
-<a href="https://en.wikipedia.org/wiki/Xorshift">Xorshift</a>
+<a href="https://en.wikipedia.org/wiki/Chi-squared_test">Chi-squared test, </a>
+<a href="https://en.wikipedia.org/wiki/Xorshift">Xorshift, </a>
 <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher–Yates shuffle</a>
 
 ---
