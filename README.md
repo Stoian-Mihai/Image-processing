@@ -42,6 +42,7 @@ The correlation is valid if it is greater than a certain threshold that is given
 
 For 0.5 correlation threshold:
 <p align="left">
+  2:
   <img src="205.bmp" width="350" title="2">
   <img src="305.bmp" width="350" title="3">
   <img src="705.bmp" width="350" title="7">
