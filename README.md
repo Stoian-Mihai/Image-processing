@@ -36,4 +36,14 @@ Wikipedia links:
 
 ---
 
+In the second part of the project I implemented a template-matching algorithm that is guessing handwriting numbers.  
+The algorithm determines the Cross-correlation between a template of a number and cut portions from bitmap.
+The correlation is valid if it is greater than a certain threshold that is given by the user.    
 
+For 0.5 correlation threshold:
+<p align="left">
+  <img src="205.png" width="350" title="2">
+  <img src="305.png" width="350" title="3">
+  <img src="705.png" width="350" title="7">
+  <img src="805.png" width="350" title="8">
+</p>  
