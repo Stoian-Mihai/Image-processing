@@ -20,4 +20,7 @@ Example of encryption:
 <p align="left">
   <img src="peppers.bmp" width="250" ">
   <img src="peppersenc.bmp" width="250" ">
-</p>
+</p>  
+
+We can see that the Chi-squared test values of the encrypted image are bellow 293.25 so the distribution of the pixels is uniform.
+
